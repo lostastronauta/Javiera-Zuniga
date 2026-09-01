@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV Javiera Zúñiga</title>
-    <!-- Importamos fuentes modernas de Google Fonts -->
+    <!-- Importamos fuentes modernas -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
         
@@ -13,17 +13,17 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-print-color-adjust: exact; /* Para que Chrome imprima los colores de fondo */
+            -webkit-print-color-adjust: exact; 
             print-color-adjust: exact;
         }
         
         body { 
-            background: #eef2f6; /* Fondo gris suave para la ventana del navegador */
+            background: #eef2f6; 
             font-family: 'Inter', sans-serif; 
             color: #2d3748; 
             display: flex; 
             justify-content: center;
-            padding: 40px 0;
+            padding: 20px 0; /* Un poco de aire arriba y abajo */
         }
         
         /* Contenedor principal tamaño A4 */
@@ -33,13 +33,14 @@
             min-height: 297mm; 
             background: white; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
-            overflow: hidden; /* Evita desbordes */
+            overflow: hidden;
+            position: relative;
         }
         
         /* --- COLUMNA IZQUIERDA (SIDEBAR) --- */
         .sidebar { 
             width: 35%; 
-            background: linear-gradient(180deg, #1a365d 0%, #2c5282 100%); /* Azul profesional */
+            background: linear-gradient(180deg, #1a365d 0%, #2c5282 100%);
             color: white; 
             padding: 40px 30px; 
             display: flex; 
@@ -55,6 +56,7 @@
             border: 4px solid rgba(255,255,255,0.2);
             margin-bottom: 30px;
             background-color: #fff;
+            flex-shrink: 0; /* Evita que la foto se aplaste */
         }
         
         .foto-container img { 
@@ -72,7 +74,7 @@
             font-size: 14px; 
             text-transform: uppercase; 
             letter-spacing: 2px; 
-            color: #90cdf4; /* Azul claro para títulos sidebar */
+            color: #90cdf4;
             font-weight: 700;
             margin-bottom: 15px;
             border-bottom: 1px solid rgba(144, 205, 244, 0.3);
@@ -91,6 +93,16 @@
             color: #e2e8f0;
             margin-bottom: 8px;
             font-weight: 300;
+            /* ESTO SOLUCIONA QUE EL TEXTO SE PIERDA: */
+            word-wrap: break-word; 
+            overflow-wrap: break-word;
+        }
+
+        /* Enlaces específicos para que no se rompan feo */
+        .contact-link {
+            color: #e2e8f0;
+            text-decoration: none;
+            display: inline-block;
         }
 
         /* Estilo para las "píldoras" de habilidades */
@@ -145,7 +157,7 @@
         }
         
         .main-content h1 { 
-            font-family: 'Playfair Display', serif; /* Fuente elegante para el nombre */
+            font-family: 'Playfair Display', serif;
             font-size: 32px; 
             color: #1a365d; 
             margin: 0 0 5px 0; 
@@ -172,7 +184,6 @@
             align-items: center;
         }
         
-        /* Línea decorativa al lado del título */
         .section-title::after {
             content: '';
             flex: 1;
@@ -251,7 +262,6 @@
             padding-left: 18px;
         }
         
-        /* Viñeta personalizada */
         .job-ul li::before {
             content: '•';
             color: #4299e1;
@@ -272,21 +282,46 @@
             border: 1px solid #bee3f8;
         }
         
-        .logro strong {
-            color: #1a365d;
+        .logro strong { color: #1a365d; }
+
+        /* --- AQUÍ ESTÁ LA MAGIA PARA CELULARES (RESPONSIVE) --- */
+        @media screen and (max-width: 768px) {
+            body { padding: 0; background: white; }
+            
+            .cv-container {
+                flex-direction: column; /* Cambia a vertical */
+                width: 100%;
+                height: auto;
+                box-shadow: none;
+            }
+
+            .sidebar {
+                width: 100%; /* Ocupa todo el ancho */
+                padding: 30px 20px;
+                align-items: flex-start; /* Alinea texto a la izquierda en móvil */
+            }
+
+            .foto-container {
+                margin: 0 auto 20px auto; /* Centra la foto */
+            }
+
+            .main-content {
+                width: 100%;
+                padding: 30px 20px;
+            }
+
+            .main-content h1 { font-size: 26px; }
+            
+            /* Asegura que los enlaces largos se vean bien */
+            .sidebar li {
+                font-size: 14px; /* Un poco más grande para leer en cel */
+            }
         }
 
-        /* Ajustes para impresión (Ctrl+P) */
+        /* Ajustes para impresión (PDF) */
         @media print {
-            body { 
-                background: white; 
-                padding: 0; 
-            }
-            .cv-container { 
-                box-shadow: none; 
-                width: 100%; 
-                height: 100%; 
-            }
+            body { background: white; padding: 0; }
+            .cv-container { box-shadow: none; width: 100%; height: 100%; }
         }
     </style>
 </head>
@@ -297,17 +332,17 @@
     <!-- SIDEBAR IZQUIERDA -->
     <div class="sidebar">
         <div class="foto-container">
-            <!-- Foto de LinkedIn -->
             <img src="https://media.licdn.com/dms/image/v2/D4E03AQFQdcyj7l0y3A/profile-displayphoto-shrink_800_800/B4EZSAOwQJHgAg-/0/1737318139404?e=1789603200&v=beta&t=q1ShR5W029jf8d8NoiDPyV4TkKtMDZZ2RYDHyJKoGQs" alt="Foto Javiera">
         </div>
         
         <div class="sidebar-section">
             <h2>Contacto</h2>
             <ul>
-                <li>📱 +56 9 7957 8942</li>
-                <li>✉️ javierap.zunigaf@gmail.com</li>
+                <!-- Usamos enlaces directos para que funcionen al hacer clic -->
+                <li><a href="tel:+56979578942" class="contact-link">📱 +56 9 7957 8942</a></li>
+                <li><a href="mailto:javierap.zunigaf@gmail.com" class="contact-link">✉️ javierap.zunigaf@gmail.com</a></li>
                 <li>📍 Santiago, Chile</li>
-                <li>💼 linkedin.com/in/javiera-paz-zuniga-flores</li>
+                <li><a href="https://linkedin.com/in/javiera-paz-zuniga-flores" class="contact-link">💼 linkedin.com/in/javiera-paz-zuniga-flores</a></li>
             </ul>
         </div>
 
@@ -376,7 +411,6 @@
 
         <div class="section-title">Experiencia Profesional</div>
         
-        <!-- Trabajo 1 -->
         <div class="job-entry">
             <div class="job-header">
                 <div class="job-title">Encargada de Comunicaciones Corporativas</div>
@@ -394,7 +428,6 @@
             </div>
         </div>
 
-        <!-- Trabajo 2 -->
         <div class="job-entry">
             <div class="job-header">
                 <div class="job-title">Periodista de Comunicaciones Internas (Freelance)</div>
@@ -408,7 +441,6 @@
             </ul>
         </div>
 
-        <!-- Trabajo 3 -->
         <div class="job-entry">
             <div class="job-header">
                 <div class="job-title">Periodista de Comunicaciones Internas y Externas</div>
