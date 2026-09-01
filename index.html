@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Javiera Zúñiga</title>
+    <!-- Importamos fuentes modernas de Google Fonts -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+        
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact; /* Para que Chrome imprima los colores de fondo */
+            print-color-adjust: exact;
+        }
+        
+        body { 
+            background: #eef2f6; /* Fondo gris suave para la ventana del navegador */
+            font-family: 'Inter', sans-serif; 
+            color: #2d3748; 
+            display: flex; 
+            justify-content: center;
+            padding: 40px 0;
+        }
+        
+        /* Contenedor principal tamaño A4 */
+        .cv-container { 
+            display: flex; 
+            width: 210mm; 
+            min-height: 297mm; 
+            background: white; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+            overflow: hidden; /* Evita desbordes */
+        }
+        
+        /* --- COLUMNA IZQUIERDA (SIDEBAR) --- */
+        .sidebar { 
+            width: 35%; 
+            background: linear-gradient(180deg, #1a365d 0%, #2c5282 100%); /* Azul profesional */
+            color: white; 
+            padding: 40px 30px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+        }
+        
+        .foto-container { 
+            width: 150px; 
+            height: 150px; 
+            border-radius: 50%; 
+            overflow: hidden; 
+            border: 4px solid rgba(255,255,255,0.2);
+            margin-bottom: 30px;
+            background-color: #fff;
+        }
+        
+        .foto-container img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
+        
+        .sidebar-section {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        
+        .sidebar h2 { 
+            font-size: 14px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: #90cdf4; /* Azul claro para títulos sidebar */
+            font-weight: 700;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(144, 205, 244, 0.3);
+            padding-bottom: 5px;
+        }
+        
+        .sidebar ul { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+        }
+        
+        .sidebar li { 
+            font-size: 13px; 
+            line-height: 1.6; 
+            color: #e2e8f0;
+            margin-bottom: 8px;
+            font-weight: 300;
+        }
+
+        /* Estilo para las "píldoras" de habilidades */
+        .skills-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        .edu-item { 
+            margin-bottom: 15px;
+        }
+        
+        .edu-title { 
+            font-size: 13px; 
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+        
+        .edu-inst { 
+            font-size: 12px; 
+            color: #90cdf4;
+        }
+
+        .course-list li {
+            font-size: 12px;
+            margin-bottom: 6px;
+            opacity: 0.9;
+        }
+        
+        /* --- COLUMNA DERECHA (CONTENIDO) --- */
+        .main-content { 
+            width: 65%; 
+            padding: 50px 45px; 
+            background: #ffffff;
+        }
+        
+        .header-section {
+            margin-bottom: 35px;
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 20px;
+        }
+        
+        .main-content h1 { 
+            font-family: 'Playfair Display', serif; /* Fuente elegante para el nombre */
+            font-size: 32px; 
+            color: #1a365d; 
+            margin: 0 0 5px 0; 
+            line-height: 1.1;
+        }
+        
+        .main-content h3 { 
+            font-size: 14px; 
+            color: #4a5568; 
+            font-weight: 500; 
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .section-title { 
+            font-size: 16px; 
+            color: #1a365d; 
+            text-transform: uppercase; 
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Línea decorativa al lado del título */
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e2e8f0;
+            margin-left: 15px;
+        }
+        
+        .perfil-text { 
+            font-size: 13.5px; 
+            line-height: 1.6; 
+            color: #4a5568; 
+            text-align: justify;
+        }
+        
+        /* Tarjetas de Competencias */
+        .competencias-grid {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .competencia-card {
+            background: #f7fafc;
+            padding: 15px;
+            border-left: 4px solid #4299e1;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .competencia-card strong {
+            color: #2c5282;
+            font-size: 13px;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        .competencia-card span {
+            color: #4a5568;
+            font-size: 12.5px;
+            line-height: 1.5;
+        }
+        
+        /* Experiencia Laboral */
+        .job-entry {
+            margin-bottom: 25px;
+        }
+        
+        .job-header {
+            margin-bottom: 10px;
+        }
+        
+        .job-title { 
+            font-size: 15px; 
+            font-weight: 700; 
+            color: #2d3748; 
+        }
+        
+        .job-company { 
+            font-size: 13px; 
+            color: #4299e1; 
+            font-weight: 600;
+            margin-top: 2px;
+        }
+        
+        .job-ul { 
+            padding-left: 0; 
+            margin: 10px 0;
+            list-style: none;
+        }
+        
+        .job-ul li { 
+            font-size: 13px; 
+            color: #4a5568; 
+            margin-bottom: 6px; 
+            line-height: 1.5;
+            position: relative;
+            padding-left: 18px;
+        }
+        
+        /* Viñeta personalizada */
+        .job-ul li::before {
+            content: '•';
+            color: #4299e1;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Caja de Logros */
+        .logro { 
+            background-color: #ebf8ff;
+            padding: 12px 15px; 
+            border-radius: 6px;
+            margin-top: 10px; 
+            font-size: 12.5px; 
+            color: #2c5282;
+            line-height: 1.5;
+            border: 1px solid #bee3f8;
+        }
+        
+        .logro strong {
+            color: #1a365d;
+        }
+
+        /* Ajustes para impresión (Ctrl+P) */
+        @media print {
+            body { 
+                background: white; 
+                padding: 0; 
+            }
+            .cv-container { 
+                box-shadow: none; 
+                width: 100%; 
+                height: 100%; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cv-container">
+    
+    <!-- SIDEBAR IZQUIERDA -->
+    <div class="sidebar">
+        <div class="foto-container">
+            <!-- Foto de LinkedIn -->
+            <img src="https://media.licdn.com/dms/image/v2/D4E03AQFQdcyj7l0y3A/profile-displayphoto-shrink_800_800/B4EZSAOwQJHgAg-/0/1737318139404?e=1789603200&v=beta&t=q1ShR5W029jf8d8NoiDPyV4TkKtMDZZ2RYDHyJKoGQs" alt="Foto Javiera">
+        </div>
+        
+        <div class="sidebar-section">
+            <h2>Contacto</h2>
+            <ul>
+                <li>📱 +56 9 7957 8942</li>
+                <li>✉️ javierap.zunigaf@gmail.com</li>
+                <li>📍 Santiago, Chile</li>
+                <li>💼 linkedin.com/in/javiera-paz-zuniga-flores</li>
+            </ul>
+        </div>
+
+        <div class="sidebar-section">
+            <h2>Herramientas</h2>
+            <div class="skills-wrapper">
+                <span class="skill-tag">BUK (Avanzado)</span>
+                <span class="skill-tag">Adobe Illustrator</span>
+                <span class="skill-tag">Adobe Photoshop</span>
+                <span class="skill-tag">MS Office</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <h2>Formación</h2>
+            <div class="edu-item">
+                <div class="edu-title">Dipl. Gestión Estrat. Comunicaciones</div>
+                <div class="edu-inst">PUC Chile</div>
+            </div>
+            <div class="edu-item">
+                <div class="edu-title">Periodista / Lic. Com. Social</div>
+                <div class="edu-inst">Univ. Central de Chile</div>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <h2>Cursos</h2>
+            <ul class="course-list">
+                <li>• Experiencia de Marca (PUC)</li>
+                <li>• Employer Branding (UAI)</li>
+                <li>• Comunicación Efectiva (PUC)</li>
+                <li>• Ceremonial y Protocolo (PUC)</li>
+                <li>• Curso Ley Karín</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL DERECHA -->
+    <div class="main-content">
+        
+        <div class="header-section">
+            <h1>Javiera Paz Zúñiga Flores</h1>
+            <h3>Periodista | Comunicaciones Corporativas | Employer Branding</h3>
+        </div>
+
+        <div class="section-title">Perfil Profesional</div>
+        <p class="perfil-text">
+            Periodista y Diplomada en Gestión Estratégica de las Comunicaciones, con más de 10 años de trayectoria en el ámbito corporativo. Especialista en diseñar, ejecutar y evaluar estrategias de comunicación interna alineadas a los objetivos del negocio. Destacada capacidad para gestionar el relato organizacional, articular mensajes entre distintas áreas y fortalecer la cultura corporativa a través de proyectos de Employer Branding y Desarrollo Organizacional. Hábil en el monitoreo de KPIs, gestión de crisis y resguardo de la reputación corporativa.
+        </p>
+
+        <div class="section-title">Competencias Clave</div>
+        <div class="competencias-grid">
+            <div class="competencia-card">
+                <strong>Estrategia Corporativa</strong>
+                <span>Diseño de planes de comunicación, alineación de negocio y gestión de reputación.</span>
+            </div>
+            <div class="competencia-card">
+                <strong>Cultura y Gente</strong>
+                <span>Employer Branding, gestión cultural, endomarketing y programas de reconocimiento.</span>
+            </div>
+            <div class="competencia-card">
+                <strong>Relaciones Públicas</strong>
+                <span>Relacionamiento con stakeholders, gestión de prensa y coordinación interáreas.</span>
+            </div>
+        </div>
+
+        <div class="section-title">Experiencia Profesional</div>
+        
+        <!-- Trabajo 1 -->
+        <div class="job-entry">
+            <div class="job-header">
+                <div class="job-title">Encargada de Comunicaciones Corporativas</div>
+                <div class="job-company">Grupo Pesco | Marzo 2024 – Presente</div>
+            </div>
+            <ul class="job-ul">
+                <li>Diseño e implementación de la estrategia de comunicaciones internas, alineada a los objetivos corporativos del negocio.</li>
+                <li>Gestión del relato corporativo hacia stakeholders internos y coordinación de hitos comunicacionales con gerencias y áreas clave.</li>
+                <li>Desarrollo de campañas de endomarketing y liderazgo de proyectos de gestión cultural para fortalecer el sentido de pertenencia.</li>
+                <li>Monitoreo y definición de KPIs comunicacionales para evaluar el impacto de las acciones.</li>
+                <li>Gestión de contenidos corporativos (comunicados, newsletter) y administración de la plataforma interna (BUK).</li>
+            </ul>
+            <div class="logro">
+                <strong>Logro clave:</strong> Consolidación de una estrategia comunicacional interna estructurada y alineada al negocio, junto con el fortalecimiento del sentido de pertenencia mediante programas de reconocimiento corporativo.
+            </div>
+        </div>
+
+        <!-- Trabajo 2 -->
+        <div class="job-entry">
+            <div class="job-header">
+                <div class="job-title">Periodista de Comunicaciones Internas (Freelance)</div>
+                <div class="job-company">Grupo Simma – Itvis (Empresa de Tecnología) | 2023 – 2024</div>
+            </div>
+            <ul class="job-ul">
+                <li>Elaboración e implementación del plan de comunicaciones a partir de un diagnóstico organizacional previo.</li>
+                <li>Definición y monitoreo de KPIs comunicacionales para medir el impacto de las iniciativas.</li>
+                <li>Desarrollo de campañas estratégicas para hitos clave de la compañía y gestión de la plataforma interna (BUK).</li>
+                <li>Generación de contenidos corporativos adaptados a la industria tecnológica.</li>
+            </ul>
+        </div>
+
+        <!-- Trabajo 3 -->
+        <div class="job-entry">
+            <div class="job-header">
+                <div class="job-title">Periodista de Comunicaciones Internas y Externas</div>
+                <div class="job-company">Sercotec – Ministerio de Economía | 2012 – 2020</div>
+            </div>
+            <ul class="job-ul">
+                <li>Implementación de la estrategia de comunicaciones internas a nivel nacional y planificación anual de eventos institucionales.</li>
+                <li>Gestión de relaciones con medios, agencias de producción y coordinación de prensa institucional.</li>
+                <li>Planificación y ejecución de campañas comunicacionales para el posicionamiento de programas y servicios.</li>
+                <li>Liderazgo en el desarrollo de contenidos corporativos (intranet, newsletter) y coordinación del relato institucional con gerencias a nivel nacional.</li>
+            </ul>
+            <div class="logro">
+                <strong>Logro clave:</strong> Desarrollo y lanzamiento de la primera revista institucional a nivel nacional, y fortalecimiento del posicionamiento comunicacional de programas estratégicos del ministerio.
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
